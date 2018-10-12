@@ -1,5 +1,6 @@
 (ns reagent03.front.page.home
-  (:require [ajax.core :refer [GET POST]]))
+  (:require [ajax.core :refer [GET POST]]
+            [reagent03.component.card :refer [card-html]]))
 
 (defonce state (atom {:start 1
                       :toto [{:id "1"
@@ -16,6 +17,7 @@
   (GET "http://localhost:9500/api/movie"
        :handler (fn [resp]
                   (let [json-data (js->clj (js/JSON.parse resp) :keywordize-keys true)]
+                    (js/console.log json-data)
                     (swap! state assoc-in [:todo] (:rows json-data))))))
 
 (defn add-todo [state todo-row]
@@ -29,12 +31,9 @@
 (defn todo-ui [state]
   (map (fn [m]
          [:div {:key (:id m)}
-          [:div 
-           [:span (:id m)]
-           [:img {:src (:src m) :style {:max-width 60}}]
-           (:name m)
-           [:input {:type "checkbox" :name "ok" :checked (:done m)
-                    :on-change #(delete-todo state (:id m))}]]])
+          (card-html (:id m) "" (:title m) "" (:src m) [])
+          [:input {:type "checkbox" :name "ok" :checked (:done m)
+                   :on-change #(delete-todo state (:id m))}]])
        (:todo @state)))
 
 (defn page-html []

@@ -1,9 +1,8 @@
 (ns reagent03.component.card
   (:require [clojure.string :as str]))
 
-(defn card-html [context id title description image meta]
-  [:a.ui.card {:key id :href (str "/detail/" id)}
-   ;; {:class "ui card" :data-id (str id) :href (str/join [context "/" id])}
+(defn card-html [id href title description image meta]
+  [:a.ui.card {:key id :href href}
    [:div 
     [:img {:src image :style {:max-width "60px"}}]]
    [:div {:class "content"}
