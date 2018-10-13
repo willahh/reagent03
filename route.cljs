@@ -7,7 +7,9 @@
    [reagent03.component.card :refer [card-html]]
    [reagent03.component.html-wrapper.wrapper :refer [wrap-page-html]]
    [reagent03.front.page.home :as home]
-   [reagent03.front.page.about :as about]))
+   [reagent03.front.page.about :as about]
+   [reagent03.front.page.week :as week]
+   [reagent03.front.page.actor :as actor]))
 
 (defonce state (atom {:start 1
                       :toto [{:id "1"
@@ -39,6 +41,16 @@
 (defroute "/about" []
   (reset! page (fn []
                  (-> (about/page-html)
+                     wrap-page-html))))
+
+(defroute "/week" []
+  (reset! page (fn []
+                 (-> (week/page-html)
+                     wrap-page-html))))
+
+(defroute "/actor" []
+  (reset! page (fn []
+                 (-> (actor/page-html)
                      wrap-page-html))))
 
 ;; --------

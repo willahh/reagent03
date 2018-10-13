@@ -1,6 +1,7 @@
 (ns reagent03.component.html-wrapper.main)
 
 (def nav [{:key "Home" :label "Home" :href "/"}
+          {:key "About" :label "About" :href "/about"}
           {:key "Week" :label "Week" :info "Get last week movies" :href "/week"}
           {:key "Actors" :label "Actors" :info "Show actors" :href "/actor"}])
 
@@ -22,11 +23,10 @@
           [:a {:key (:label row) :class "item" :href (:href row)} (:label row)]) nav)])
 
 (defn header-html []
-  [:div
-   [:div.ui {:class "ui inverted menu"}
-    [:div {:class "header item"} "Glurps!"]
-    [:div {:class "ui container"}
-     (nav-html nav)]]])
+  [:div.ui.fixed.inverted.menu
+   [:div {:class "header item"} "Glurps!"]
+   [:div {:class "ui container"}
+    (nav-html nav)]])
 
 (defn breadcrumb-html []
   [:div {:class "ui large breadcrumb"}

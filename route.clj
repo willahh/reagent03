@@ -13,5 +13,7 @@
                   wrap-page-html))
   (GET "/about" [] (-> index-html
                        wrap-page-html))
+  (GET "/week" [] (-> index-html
+                      wrap-page-html))
   api/api-route
   (route/not-found "<h1>Page not found</h1>"))

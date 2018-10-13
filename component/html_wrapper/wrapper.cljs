@@ -5,4 +5,5 @@
 
 (defn wrap-page-html [html]
   [:div (main/header-html)
-   [:div.ui.container html]])
+   [:div.ui.main.text.container {:style {:margin-top "5em"}}
+    html]])
