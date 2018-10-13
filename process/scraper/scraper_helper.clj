@@ -40,15 +40,7 @@ breaks."
       (taxi/html "body")
       (remove-meta-itemprop)
       (remove-html-comment)
-      (remove-empty-tag)
+      ;; (remove-empty-tag)
       (remove-empty-textnode)))
 
 (def get-html-memoise (memoize get-html))
-
-
-
-
-
-
-
-

@@ -9,7 +9,8 @@
    [reagent03.front.page.home :as home]
    [reagent03.front.page.about :as about]
    [reagent03.front.page.week :as week]
-   [reagent03.front.page.actor :as actor]))
+   [reagent03.front.page.actor :as actor]
+   [reagent03.front.page.actor-detail :as actor-detail]))
 
 (defonce state (atom {:start 1
                       :toto [{:id "1"
@@ -51,6 +52,10 @@
 (defroute "/actor" []
   (reset! page (fn []
                  (-> (actor/page-html)
+                     wrap-page-html))))
+(defroute "/actor/:actorid" []
+  (reset! page (fn []
+                 (-> (actor-detail/page-html)
                      wrap-page-html))))
 
 ;; --------
